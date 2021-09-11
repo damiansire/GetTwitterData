@@ -1,0 +1,29 @@
+{
+  "name": "dev-channel-twitter-app",
+  "version": "1.0.0",
+  "description": "Twitter bot for recommend my channel to people",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damiansire/DevChannelTwitterApp.git"
+  },
+  "keywords": [
+    "twitter",
+    "bot",
+    "nodejs"
+  ],
+  "author": "Damian Sire <damiansire@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damiansire/DevChannelTwitterApp/issues"
+  },
+  "homepage": "https://github.com/damiansire/DevChannelTwitterApp#readme",
+  "dependencies": {
+    "nodemon": "^2.0.12",
+    "twit": "^2.2.11"
+  }
+}
