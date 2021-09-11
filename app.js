@@ -1,6 +1,8 @@
+const fs = require("fs");
 const { twitterKeys } = require("./notocar/keys")
 
-const blocklist = ["damiansire"]
+const blocklistNamesObj = JSON.parse(fs.readFileSync("blocklist.json"));
+const blocklist = blocklistNamesObj.map(nameObs => nameObs.name);
 
 try {
     // Paquete Twit
