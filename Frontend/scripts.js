@@ -1,3 +1,5 @@
+let allTweets = [];
+
 const endpoint = "http://localhost:3005/api/v1/tweets";
 
 const tableRef = document.getElementById("tweetTable");
@@ -18,9 +20,25 @@ function insertTable(name, tweet) {
 }
 
 function renderTweets(tweetList) {
+    document.getElementById("tweetTbody").innerHTML = "";
     tweetList.forEach(tweet => {
         insertTable(tweet.usuario, tweet.tweet);
     });
 }
 
-fetch(endpoint).then(response => response.json()).then(tweetList => renderTweets(tweetList))
+function RefreshData() {
+    fetch(endpoint).then(response => response.json()).then(tweetList => {
+
+        if (tweetList.length > allTweets.length) {
+            allTweets = tweetList;
+            console.log("Nueva data")
+            renderTweets(tweetList)
+        }
+        else {
+            console.log("No fue necesario")
+        }
+        setTimeout(RefreshData, 10000)
+    })
+}
+
+RefreshData();
