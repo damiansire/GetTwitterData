@@ -3,7 +3,8 @@ const cors = require("cors");
 const app = express();
 
 const {
-    getAllTweets
+    getAllTweets,
+    getCountsByUsers
 } = require("./controllers/tweets");
 
 //Middlewares
@@ -13,6 +14,10 @@ app.use(cors({ origin: "*" }));
 
 //Devuelve todos los tweets
 app.get("/api/v1/tweets", getAllTweets);
+
+//Devuelve todos los tweets
+app.get("/api/v1/tweets/counts", getCountsByUsers);
+
 
 
 //Starting the server

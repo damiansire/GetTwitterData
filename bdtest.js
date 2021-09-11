@@ -1,4 +1,3 @@
-const Twit = require('twit');
 const { Client } = require('pg');
 
 const { dbKeys } = require('./notocar/dbconfig');
@@ -28,6 +27,14 @@ const selectTweets = async () => {
     return response.rows;
 }
 
+const selectCountsByUsers = async () => {
+    const client = new Client(dbKeys);
+    client.connect();
+    const response = await client.query('SELECT usuario, count(tweet) FROM Tweets GROUP BY usuario');
+    client.end();
+    return response.rows;
+}
+
 
 const deleteTweets = () => {
     const query = "DELETE FROM Tweets where tweet=':';";
@@ -52,3 +59,4 @@ const insertTweet = (user, message) => {
 
 exports.insertTweet = insertTweet;
 exports.selectTweets = selectTweets;
+exports.selectCountsByUsers = selectCountsByUsers;
