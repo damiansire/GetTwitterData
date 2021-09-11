@@ -8,17 +8,29 @@ const { dbKeys } = require('./notocar/dbconfig');
 const execute = (query) => {
     const client = new Client(dbKeys);
     client.connect();
-    client.query(query, (err, res) => {
+    return client.query(query, (err, res) => {
         if (err) throw err;
+        let tweets = [];
         for (let row of res.rows) {
             console.log(JSON.stringify(row));
+            tweets.push(row)
         }
         client.end();
+        return tweets;
     });
 }
 
-const selectTweets = () => {
-    const query = "SELECT * FROM Tweets;";
+const selectTweets = async () => {
+    const client = new Client(dbKeys);
+    client.connect();
+    const response = await client.query('SELECT * FROM Tweets');
+    client.end();
+    return response.rows;
+}
+
+
+const deleteTweets = () => {
+    const query = "DELETE FROM Tweets where tweet=':';";
     execute(query);
 }
 
@@ -36,6 +48,7 @@ const insertTweet = (user, message) => {
         .catch(e => console.error(e.stack))
 
 }
+
 
 exports.insertTweet = insertTweet;
 exports.selectTweets = selectTweets;

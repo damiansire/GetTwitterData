@@ -39,7 +39,7 @@ try {
         console.log(blocklist)
         if (!blocklist.includes(tweet.user.screen_name)) {
             // Retweet
-            //T.post('statuses/retweet/:id', { id: tweet.id_str }, responseCallback);
+            T.post('statuses/retweet/:id', { id: tweet.id_str }, responseCallback);
             // Me Gusta
             T.post('favorites/create', { id: tweet.id_str }, responseCallback);
             console.log(tweet.user.name);

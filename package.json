@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon api.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/damiansire/DevChannelTwitterApp#readme",
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "nodemon": "^2.0.12",
     "pg": "^8.7.1",
     "twit": "^2.2.11"

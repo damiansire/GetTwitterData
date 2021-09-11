@@ -1,0 +1,8 @@
+.thead-dark, td{
+    font-size: 25px;
+    text-align: center;
+}
+
+td{
+    color: red;
+}
